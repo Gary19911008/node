@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.stu input {
+  width: 200px;
+  height: 40px;
+  border-color: green;
+  outline: none;
+  margin: 20px;
+}
+
+.stu button {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  background: rgb(29, 116, 179);
+}

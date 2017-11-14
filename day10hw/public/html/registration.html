@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JDregisterPage</title>
+  <link rel="stylesheet" href="/html/font/iconfont.css">
+  <link rel="stylesheet" href="/css/registration.css">
+</head>
+
+<body>
+  <div class="registerPage">
+    <div class="top clearfix">
+      <div class="w clearfix">
+        <div class="logo_title">欢迎注册</div>
+        <div class="have_account clearfix">
+          已有账号？
+          <a href="/login.html">请登录</a>
+        </div>
+      </div>
+    </div>
+    <div class="middle w">
+      <div class="main clearfix">
+        <div class="main_left">
+          <div class="form_item">
+            <label>用&nbsp;&nbsp;&nbsp; 户&nbsp;&nbsp;&nbsp; 名</label>
+            <input class="field user" type="text" value="" placeholder="您的账户名和登录名" onfocus="this.placeholder=''" onblur="this.placeholder='您的账户名和登录名'">
+          </div>
+          <div class="box">
+            <div class="input_tip user_tip">
+              <i class="iconfont">&#xe606;</i>&nbsp;&nbsp;&nbsp;支持中文，字母，数字
+            </div>
+            <div class="user_error tip">
+              <i class="iconfont errorimg">&#xe627;</i>&nbsp;&nbsp; 请输入用户名
+            </div>
+          </div>
+          <div class="form_item">
+            <label>设 置 密 码</label>
+            <input class="field passwd" type="password" value="" placeholder="建议至少使用两种字符组合" onfocus="this.placeholder=''" onblur="this.placeholder='建议至少使用两种字符组合'">
+          </div>
+          <div class="box">
+            <div class="input_tip passwd_tip">
+              <i class="iconfont">&#xe606;</i>&nbsp;&nbsp;&nbsp;建议使用字母，数字和符号两种及以上的组合
+            </div>
+            <div class="passwd_error tip">
+              <i class="iconfont errorimg">&#xe627;</i>&nbsp;&nbsp; 请输入密码
+            </div>
+          </div>
+          <div class="form_item">
+            <label>确 认 密 码</label>
+            <input class="field conpasswd" type="password" value="" placeholder="请再次输入密码" onfocus="this.placeholder=''" onblur="this.placeholder='请再次输入密码'">
+          </div>
+          <div class="box">
+            <div class="input_tip conpasswd_tip">
+              <i class="iconfont">&#xe606;</i>&nbsp;&nbsp;&nbsp;请再次输入密码
+            </div>
+            <div class="conpasswd_error tip">
+              <i class="iconfont errorimg">&#xe627;</i>&nbsp;&nbsp; 请再次输入密码
+            </div>
+            <div class="conpasswd_error1 tip">
+              <i class="iconfont errorimg">&#xe627;</i>&nbsp;&nbsp; 两次密码输入不一致
+            </div>
+          </div>
+          <div class="form_item zhuce">
+            <button class="moren" type="submit" style="background:#e22" name="button">立即注册</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/jquery.min.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      $(".moren").click(function() {
+        var username = $(".user").val();
+        var passwdname = $(".passwd").val();
+        var conpasswdname = $(".conpasswd").val();
+        if (!username) {
+          $(".user_error").css("display", "inline-block");
+        } else if (!passwdname) {
+          $(".passwd_error").css("display", "inline-block");
+        } else if (!conpasswdname) {
+          $(".conpasswd_error").css("display", "inline-block");
+        } else if (conpasswdname != passwdname) {
+          $(".conpasswd_error1").css("display", "inline-block")
+        } else {
+          $.ajax({
+              url: '/reg',
+              type: 'post',
+              data: {
+                user: username,
+                passwd: conpasswdname
+              }
+            })
+            .done(function(data, status, jqXHR) {
+              if (data.reg === false) {
+                alert("用户名以存在，请重新输入");
+              } else {
+                alert("注册成功");
+                window.location.href = data.url;
+              }
+            })
+            .fail(function(jqXHR, status, err) {
+              console.log("error");
+            })
+        }
+      });
+    });
+
+    $(".user").focus(function() {
+      $(".user_tip").css("display", "inline-block"),
+        $(".user_error").css("display", "none");
+    });
+    $(".user").blur(function() {
+      $(".user_tip").css("display", "none");
+    });
+    $(".passwd").focus(function() {
+      $(".passwd_tip").css("display", "inline-block"),
+        $(".passwd_error").css("display", "none")
+    });
+    $(".passwd").blur(function() {
+      $(".passwd_tip").css("display", "none");
+    });
+    $(".conpasswd").focus(function() {
+      $(".conpasswd_tip").css("display", "inline-block"),
+        $(".conpasswd_error").css("display", "none"),
+        $(".conpasswd_error1").css("display", "none")
+    });
+    $(".conpasswd").blur(function() {
+      $(".conpasswd_tip").css("display", "none");
+    });
+  </script>
+
+</body>
+
+</html>

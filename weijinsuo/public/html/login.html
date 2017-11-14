@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/new_page.css">
+  <title>登录</title>
+</head>
+
+<body>
+  <div class="sign-top">
+    <div class="container">
+      <div class="link">
+        <ul>
+          <li><a href="/" class="on">返回首页</a></li>
+          <li class="on">
+            <a href="/login.html">登录</a>
+            <span class="slider"></span>
+          </li>
+          <li>
+            <a href="./register.html" style="color:blue;">注册</a>
+          </li>
+        </ul>
+      </div>
+      <div class="logo">
+        <img src="../images/login/logo.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="sign-body">
+    <div class="container clearfix" style="height:475px;overflow:hidden">
+      <div class="ad">
+        <a href="#" style="background: url(../images/login/ad.jpg) center no-repeat"></a>
+      </div>
+      <div class="formBox log-form">
+        <h2>登录微金所</h2>
+        <form>
+          <ul class="login-ul">
+            <img class="log-img log-pwd" id="log-pwd" src="../images/login/log-pwd.png" alt="">
+            <img class="log-img log-user" id="log-user" src="../images/login/success.png" alt="">
+            <li class="pa-msg">
+              <i class="icon icon-user-o"></i>
+              <input type="text" class="input-box" id="mobile" placeholder="请输入您的手机号码">
+              <span class="code_msg" id="code_msg"></span>
+            </li>
+            <li>
+              <i class="icon icon-lock"></i>
+              <input type="text" class="input-box" name="loginPwd" id="pwd" placeholder="密码">
+            </li>
+            <li style="display: none;" id="imgCode-item">
+              <i class="icon icon-image"></i>
+              <input type="text" class="input-box" id="checkCode" placeholder="验证码">
+              <img src="../images/login/code.png" class="img-code" id="imgCode">
+            </li>
+            <li class="error-msg" id="error-msg" style="display:none;">用户不存在</li>
+            <li class="option">
+              <span class="text-left">
+						    <input type="checkbox" id="remember">
+						    <label for="remember">记住用户名</label>
+					    </span>
+              <span class="text-right">
+						    <a href="/user/forget-password">忘记密码?</a>
+					    </span>
+            </li>
+            <li>
+              <input type="button" class="btn-large" id="login-btn" value="登录">
+            </li>
+            <li class="option">
+              还没有账号?<a href="./register.html" class="sublink">立即创建</a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="prompting">
+
+  </div>
+
+  <script src="../js/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $("#mobile").focus(function() {
+      $("#log-pwd").hide(),
+        $("#log-user").show()
+    });
+
+    $("#pwd").focus(function() {
+      $("#log-pwd").show(),
+        $("#log-user").hide()
+    });
+
+    $("#login-btn").click(() => {
+      if ($("#mobile").val() === "" || $("#pwd").val() === "") {
+
+      }
+    });
+  </script>
+
+</body>
+
+</html>

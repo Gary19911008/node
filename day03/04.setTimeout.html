@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+     setTimeout(function(){
+       console.log("直接在全局使用setTimeout, 内部this = ", this);//window
+     }, 2000);
+
+
+     function fun(){
+       setTimeout(function(){
+         console.log("在fun函数内部使用setTimeout, 内部this = ", this);//都是window
+       }, 2000);
+     }
+     fun();
+     fun.call({name: 'lisi'});
+
+    </script>
+
+  </body>
+</html>

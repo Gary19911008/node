@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <!-- 导入重复使用的部分， 并且可以进行数据渲染  -->
+    <%- include("head", {name: "xxxx"}) %>
+
+
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <ul>
+      <!-- 执行js代码  -->
+    <% for (var i = 0; i < items.length; i++) {%>
+      <li><%= items[i] %></li>
+    <% } %>
+    </ul>
+
+    <%- include("foot") %>
+  </body>
+</html>

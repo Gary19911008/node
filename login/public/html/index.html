@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>首页</title>
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .welcome {
+        text-align: center;
+
+        font-size: 50px;
+        /*背景渐变*/
+        background: -webkit-linear-gradient(90deg, red, yellow);
+
+        /*对背景进行裁剪,只保留文本部分*/
+        -webkit-background-clip: text;
+
+        /*指定文字的填充颜色*/
+        -webkit-text-fill-color: transparent;
+      }
+
+      .exit {
+        text-align: center;
+      }
+
+      .exit button {
+        width: 150px;
+        height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1 class="welcome">
+      欢迎来到xxx首页
+    </h1>
+
+    <div class="exit">
+      <button id="btnLogout">退出</button>
+    </div>
+
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+    $(function(){
+      $("#btnLogout").click(function(){
+        window.location.pathname = "/logout";
+      });
+    });
+
+    </script>
+  </body>
+</html>

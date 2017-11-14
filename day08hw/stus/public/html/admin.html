@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<title>学生信息管理</title>
+	<link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="/css/htmleaf-demo.css">
+	<style type="text/css">
+		.clearfix:after,
+		.container:after,
+		.tab-nav:after {
+			content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Quicksand', sans-serif;
+		}
+
+		.container {
+			position: relative;
+			background: white;
+			padding: 3em;
+		}
+
+		.tab-group {
+			position: relative;
+			border: 1px solid #eee;
+			margin-top: 2.5em;
+			border-radius: 0 0 10px 10px;
+		}
+
+		.tab-group section {
+			opacity: 0;
+			height: 0;
+			padding: 0 1em;
+			overflow: hidden;
+			transition: opacity 0.4s ease, height 0.4s ease;
+		}
+
+		.tab-group section.active {
+			opacity: 1;
+			height: auto;
+			overflow: visible;
+		}
+
+		.tab-nav {
+			list-style: none;
+			margin: -2.5em -1px 0 0;
+			padding: 0;
+			height: 2.5em;
+			overflow: hidden;
+		}
+
+		.tab-nav li {
+			display: inline;
+		}
+
+		.tab-nav li a {
+			top: 1px;
+			position: relative;
+			display: block;
+			float: left;
+			border-radius: 10px 10px 0 0;
+			background: #eee;
+			line-height: 2em;
+			padding: 0 1em;
+			text-decoration: none;
+			color: grey;
+			margin-top: .5em;
+			margin-right: 1px;
+			transition: background .2s ease, line-height .2s ease, margin .2s ease;
+		}
+
+		.tab-nav li.active a {
+			background: #6EB590;
+			color: white;
+			line-height: 2.5em;
+			margin-top: 0;
+		}
+	</style>
+	<script src="/js/prefixfree.min.js"></script>
+</head>
+
+<body>
+	<div class="htmleaf-container">
+		<h1 style="text-align: center;color:#fff;">学生信息管理系统</h1>
+		<div class="container">
+			<div class="tab-group">
+				<section id="tab1" title="信息添加">
+					<div style="height:30px;"></div>
+					<div class="infor1">
+						姓名：<input id="name1" type="text" placeholder="请输入姓名"> 年龄：
+						<input id="age" type="text" placeholder="请输入年龄"> 性别：
+						<input id="gender" type="text" placeholder="请输入性别">
+						<button id="btn1" type="button" name="button">添加</button>
+
+					</div>
+
+				</section>
+				<section id="tab2" title="信息查找">
+					<div style="height:30px;"></div>
+					<div class="infor2">
+						姓名：<input id="name2" type="text" placeholder="请输入姓名">
+						<button id="btn2" type="button" name="button">查找</button>
+					</div>
+
+				</section>
+				<section id="tab3" title="信息更改">
+					<div style="height:30px;"></div>
+					<div class="infor3">
+						查找姓名：<input id="name3" type="text" placeholder="请输入姓名"> 需要更改项：
+						<input id="name5" type="text" placeholder="请输入更改项"> 更改内容：
+						<input id="name6" type="text" placeholder="请输入更改内容">
+						<button id="btn3" type="button" name="button">更改</button>
+					</div>
+
+				</section>
+				<section id="tab4" title="信息删除">
+					<div style="height:30px;"></div>
+					<div class="infor4">
+						姓名：<input id="name4" type="text" placeholder="请输入姓名">
+						<button id="btn4" type="button" name="button">删除</button>
+					</div>
+
+				</section>
+			</div>
+		</div>
+		<script src="/js/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="/js/jquery-tab.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.tab-group').tabify();
+			})
+			$(function() {
+				$("#btn1").click(function() {
+					$.ajax({
+						url: "/stu",
+						method: 'post',
+						data: {
+							name: $("#name1").val(),
+							age: $("#age").val(),
+							gender: $("#gender").val()
+						}
+
+					}).done(function(data, status, jqXHR) {
+						console.log(data);
+					}).fail(function(jqXHR, status, err) {
+						console.log(err);
+					});
+				});
+			});
+
+			$(function() {
+				$("#btn2").click(function() {
+					$.ajax({
+						url: "/stu",
+						method: 'get',
+						data: {
+							name: $("#name2").val()
+						}
+					}).done(function(data, status, jqXHR) {
+						console.log(data);
+					}).fail(function(jqXHR, status, err) {
+						console.log(err);
+					});
+				});
+			});
+
+			$(function() {
+				$("#btn3").click(function() {
+					$.ajax({
+						url: "/stu",
+						method: 'put',
+						data: {
+							name: $("#name3").val(),
+							options: $("#name5").val(),
+							content: $("#name6").val()
+						}
+					}).done(function(data, status, jqXHR) {
+						console.log(data);
+					}).fail(function(jqXHR, status, err) {
+						console.log(err);
+					});
+				});
+			});
+
+			$(function() {
+				$("#btn4").click(function() {
+					$.ajax({
+						url: "/stu",
+						method: 'delete',
+						data: {
+							name: $("#name4").val()
+						}
+					}).done(function(data, status, jqXHR) {
+						console.log(data);
+					}).fail(function(jqXHR, status, err) {
+						console.log(err);
+					});
+				});
+			});
+		</script>
+</body>
+
+</html>

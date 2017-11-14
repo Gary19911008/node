@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>首页</title>
+  </head>
+  <body>
+
+    <button id="btn_get">点击获得数据</button>
+    <button id="btn_post">点击提交数据</button>
+
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+    $(function(){
+
+      //查询
+      $("#btn_get").click(function(){
+        $.ajax({
+          url: "/data",
+          method: 'get',
+          data: {
+            limit: 10
+          }
+        }).done(function(data, status, jqXHR){
+          console.log(data);
+        }).fail(function(jqXHR, status, error){
+          console.log(error);
+        });
+      });
+
+
+      //提交
+      $("#btn_post").click(function(){
+        $.ajax({
+          url: "/data",
+          method: 'post',
+          data: {
+            name: 'zhangsan',
+            age: 18
+          }
+        }).done(function(data, status, jqXHR){
+          console.log(data);
+        }).fail(function(jqXHR, status, error){
+          console.log(error);
+        });
+      });
+
+
+
+    });
+
+    </script>
+  </body>
+</html>

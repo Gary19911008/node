@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/login.css">
+  <title>登录</title>
+</head>
+
+<body>
+  <div class="page">
+    <div class="image">
+      <h1>用户登录</h1>
+      <div class="inputs">
+        用户名：<input id="user" type="text" placeholder="请输入用户名">
+        密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" id="pwd" placeholder="请输入密码">
+      </div>
+      <button id="btn" type="button" name="button">注册</button>
+      <button id="btn1" type="button" name="button">登录</button>
+    </div>
+  </div>
+
+  <script src="/js/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  $(function(){
+    $("#btn").click(function(){
+      $.ajax({
+        url: '/reg',
+        type: 'get',
+        data:{
+          status:1
+        }
+      })
+      .done(function(data, status, jqXHR) {
+        console.log(data);
+        if (data.status === 1) {
+          window.location.href = data.url;
+        }else {
+          alert(data.message);
+        }
+      })
+      .fail(function() {
+        console.log("error");
+      })
+    });
+
+    $("#btn1").click(function(){
+      $.ajax({
+        url: '/login',
+        type: 'post',
+        data:{
+          user: $("#user").val(),
+          passwd: $("#pwd").val()
+        }
+      })
+      .done(function(data, status, jqXHR) {
+        if (data.login === true) {
+          window.location.pathname = data.url;
+        }else {
+          alert("用户名密码错误");
+        }
+      })
+      .fail(function() {
+        console.log("err");
+      })
+    });
+  });
+
+  </script>
+
+</body>
+
+</html>

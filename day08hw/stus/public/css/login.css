@@ -1,0 +1,54 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.image {
+  width: 750px;
+  height: 450px;
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  margin-left: -375px;
+  background: url("../images/login.jpg") no-repeat;
+}
+
+.image h1 {
+  text-align: center;
+  margin-top: 90px;
+  color: red;
+}
+
+.inputs {
+  width: 300px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  margin-left: -150px;
+  font-size: 20px;
+}
+
+.inputs>input {
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
+}
+
+#btn {
+  width: 80px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 300px;
+  margin-left: -35px;
+  font-size: 20px;
+  text-align: center;
+}

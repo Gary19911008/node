@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/css/login.css">
+  <title>学生信息管理系统</title>
+</head>
+<body>
+  <div class="page">
+    <div class="image">
+      <h1>登录</h1>
+        <div class="inputs">
+          用户名：<input id="user" type="text" placeholder="请输入用户名">
+          密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" id="pwd" placeholder="请输入密码">
+        </div>
+        <button id="btn" type="button" name="button">登录</button>
+    </div>
+  </div>
+  <script src="/js/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  $(function(){
+    $("#btn").click(function(){
+      $.ajax({
+        url: "/login",
+        method: 'post',
+        data:{
+          name: $("#user").val(),
+          pwd:  $("#pwd").val()
+        }
+      }).done(function(data, status, jqXHR){
+        console.log(data);
+        if (data.status === 1) {
+          window.location.href = data.url;
+        }else {
+          alert(data.message);
+        }
+      }).fail(function(jqXHR, status, err){
+        alert("数据请求失败");
+      });
+    });
+  });
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+@charset "UTF-8";
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .clearfix::before,
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+
+  body {
+    color: #666;
+  }
+
+  .w {
+    margin: 0 auto;
+    width: 400px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .top {
+    height: 110px;
+  }
+
+  .logo_title {
+    font-size: 24px;
+    float: left;
+    margin-top: 34px;
+    margin-left: 20px;
+    color: #333;
+    height: 34px;
+    line-height: 34px;
+  }
+
+  .have_account {
+    float: right;
+    margin-top: 40px;
+    font-size: 16px;
+    color: #999;
+  }
+
+  .have_account a {
+    margin-top: 10px;
+    color: #333;
+  }
+
+  .have_account a:hover {
+    text-decoration: underline;
+  }
+
+  .main {
+    width: 830px;
+    margin: 50px auto 60px;
+  }
+
+  .main_left {
+    width: 400px;
+    float: left;
+  }
+
+  .main_left input {
+    outline: none;
+    float: left;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+  }
+
+  .form_item {
+    width: 398px;
+    height: 52px;
+    border: 1px solid #ddd;
+    position: relative;
+  }
+
+  .input_tip {
+    height: 27px;
+    color: #c5c5c5;
+  }
+
+  .form_item label {
+    width: 90px;
+    height: 52px;
+    line-height: 52px;
+    padding-left: 20px;
+    font-size: 14px;
+    float: left;
+  }
+
+  .form_item .field {
+    border: 0 none;
+    font-size: 12px;
+    width: 190px;
+    height: 19px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-top: 16px;
+  }
+
+  .box {
+    width: 400px;
+    height: 32px;
+    line-height: 32px;
+  }
+
+  .input_tip {
+    display: none;
+    font-size: 12px;
+    width: 285px;
+    height: 32px;
+    line-height: 32px;
+  }
+
+
+  .zhuce .moren {
+    width: 398px;
+    height: 52px;
+    font-size: 16px;
+    color: #fff;
+    border: 0;
+    z-index: 1;
+    outline: none;
+    cursor: pointer;
+  }
+
+
+  .errorimg {
+    font-size: 14px;
+    color: red;
+  }
+
+  .tip {
+    font-size: 12px;
+    color: red;
+    display: none;
+  }
